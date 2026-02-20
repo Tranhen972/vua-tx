@@ -1,0 +1,24 @@
+[2026-02-18 16:47:56] User: 6928858477 | Game: taixiu | Bet: 50,000 | Result: 9 (tai) | Win: 0 | Bal: 505,000
+[2026-02-18 16:48:31] User: 6928858477 | Game: taixiu | Bet: 50,000 | Result: 6 (tai) | Win: 0 | Bal: 455,000
+[2026-02-18 16:49:02] User: 6928858477 | Game: taixiu | Bet: 50,000 | Result: 6 (tai) | Win: 0 | Bal: 405,000
+[2026-02-18 16:49:17] User: 6928858477 | Game: taixiu | Bet: 50,000 | Result: 6 (tai) | Win: 0 | Bal: 355,000
+[2026-02-18 16:49:29] User: 6928858477 | Game: taixiu | Bet: 100,000 | Result: 6 (tai) | Win: 0 | Bal: 255,000
+[2026-02-18 16:49:49] User: 6928858477 | Game: taixiu | Bet: 20,000 | Result: 6 (tai) | Win: 0 | Bal: 235,000
+[2026-02-18 16:50:12] User: 6928858477 | Game: taixiu | Bet: 20,000 | Result: 2 (xiu) | Win: 0 | Bal: 215,000
+[2026-02-18 16:50:24] User: 6928858477 | Game: chanle | Bet: 5,000 | Result: 5 (le) | Win: 0 | Bal: 210,000
+[2026-02-18 22:34:24] User: 6928858477 | Game: taixiu | Pick: XIU | Bet: 5,000 | Result: 7 (tai) | Win: 0 | Bal: 95,000
+[2026-02-18 22:34:47] User: 6928858477 | Game: taixiu | Pick: TAI | Bet: 10,000 | Result: 2 (xiu) | Win: 0 | Bal: 85,000
+[2026-02-18 22:59:28] User: 6928858477 | Game: taixiu | Pick: XIU | Bet: 50,000 | Result: 0 (xiu) | Win: 50,000 | Bal: 155,000
+[2026-02-18 22:59:51] User: 6928858477 | Game: taixiu | Pick: TAI | Bet: 100,000 | Result: 8 (tai) | Win: 100,000 | Bal: 255,000
+[2026-02-18 23:00:11] User: 6928858477 | Game: taixiu | Pick: TAI | Bet: 15,000 | Result: 5 (tai) | Win: 15,000 | Bal: 270,000
+[2026-02-18 23:00:51] User: 6928858477 | Game: chanle | Pick: CHAN | Bet: 100,000 | Result: 4 (chan) | Win: 100,000 | Bal: 370,000
+[2026-02-20 15:09:39] User: 5784130839 | Game: xien | Pick: 56 | Bet: 10,000 | Result: 4 (04) | Win: 0 | Bal: 90,000
+[2026-02-20 15:25:51] User: 6692206118 | Game: taixiu | Pick: TAI | Bet: 1,530,000 | Result: 5 (tai) | Win: 1,453,500 | Bal: 101,453,500
+[2026-02-20 15:26:58] User: 6692206118 | Game: taixiu | Pick: XIU | Bet: 2,500,000 | Result: 0 (xiu) | Win: 2,375,000 | Bal: 103,828,500
+[2026-02-20 15:27:28] User: 6692206118 | Game: taixiu | Pick: TAI | Bet: 103,828,500 | Result: 5 (tai) | Win: 98,637,075 | Bal: 203,363,472
+[2026-02-20 15:29:33] User: 6692206118 | Game: taixiu | Pick: XIU | Bet: 2,000,000 | Result: 3 (xiu) | Win: 2,375,000 | Bal: 205,338,472
+[2026-02-20 15:32:40] User: 6692206118 | Game: taixiu | Pick: TAI | Bet: 3,000,000 | Result: 7 (tai) | Win: 2,850,000 | Bal: 208,188,472
+[2026-02-20 15:33:20] User: 6692206118 | Game: xien | Pick: 83 | Bet: 1,500,000 | Result: 8 (08) | Win: 0 | Bal: 206,688,472
+[2026-02-20 15:33:48] User: 6692206118 | Game: xien | Pick: 09 | Bet: 1,500,000 | Result: 8 (08) | Win: 0 | Bal: 205,188,472
+[2026-02-20 15:34:55] User: 6692206118 | Game: xien | Pick: 08 | Bet: 5,500,000 | Result: 4 (04) | Win: 0 | Bal: 200,132,916
+[2026-02-20 15:35:48] User: 6692206118 | Game: chanle | Pick: CHAN | Bet: 4,500,000 | Result: 2 (chan) | Win: 4,275,000 | Bal: 204,407,916

@@ -1,0 +1,14 @@
+[2026-02-18 16:46:54] Admin: 6928858477 | Action: ADD_BALANCE | Target: 6928858477 | Details: Amount: 500000
+[2026-02-18 16:47:32] Admin: 6928858477 | Action: ADJUST_USER_RATE | Target: 6928858477 | Details: Rate: 1
+[2026-02-18 22:48:03] Admin: 6928858477 | Action: ADD_BALANCE | Target: 6928858477 | Details: Amount: 20000
+[2026-02-18 22:58:43] Admin: 6928858477 | Action: ADJUST_USER_RATE | Target: 6928858477 | Details: Rate: 100
+[2026-02-19 14:27:06] Admin: 6928858477 | Action: APPROVE_WITHDRAW | Target: 6928858477 | Details: Amount: 50000
+[2026-02-19 14:27:19] Admin: 6928858477 | Action: REJECT_WITHDRAW | Target: 6928858477 | Details: Amount: 50000, Reason: lo c
+[2026-02-19 14:31:58] Admin: 6928858477 | Action: RESET_BALANCE | Target: 7655414323 | Details: Reset to 0
+[2026-02-19 20:26:33] Admin: ADMIN | Action: ADJUST_BALANCE | Target: 6928858477 | Details: Amount: -200000, Reason: 11
+[2026-02-19 20:40:19] Admin: ADMIN | Action: BAN | Target: 5784130839 | Details: cc
+[2026-02-19 20:41:19] Admin: ADMIN | Action: UNBAN | Target: 5784130839 | Details: 
+[2026-02-20 15:12:40] Admin: ADMIN | Action: ADJUST_BALANCE | Target: 6692206118 | Details: Amount: 100000000, Reason: nap thanh cong
+[2026-02-20 15:15:09] Admin: ADMIN | Action: EDIT_INFO | Target: 6692206118 | Details: VIP: 0, Rate: 100, Wager: 0
+[2026-02-20 15:15:19] Admin: ADMIN | Action: EDIT_INFO | Target: 6692206118 | Details: VIP: 0, Rate: 100, Wager: 0
+[2026-02-20 15:15:32] Admin: ADMIN | Action: EDIT_INFO | Target: 6692206118 | Details: VIP: 0, Rate: 99, Wager: 0

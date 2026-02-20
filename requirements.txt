@@ -1,0 +1,5 @@
+pyTelegramBotAPI
+flask
+psutil
+requests
+psycopg2-binary
