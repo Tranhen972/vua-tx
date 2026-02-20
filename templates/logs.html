@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Nhat Ky He Thong</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <a href="?type=game"
+                class="btn btn-sm btn-outline-secondary {{ 'active' if log_type == 'game' else '' }}">Game Logs</a>
+            <a href="?type=transaction"
+                class="btn btn-sm btn-outline-secondary {{ 'active' if log_type == 'transaction' else '' }}">Transaction
+                Logs</a>
+            <a href="?type=admin"
+                class="btn btn-sm btn-outline-secondary {{ 'active' if log_type == 'admin' else '' }}">Admin Logs</a>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body bg-dark text-white font-monospace p-3" style="max-height: 70vh; overflow-y: auto;">
+        {% if logs %}
+        {% for line in logs %}
+        <div class="border-bottom border-secondary mb-1 pb-1">{{ line }}</div>
+        {% endfor %}
+        {% else %}
+        <p class="text-muted">Chua co du lieu log.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

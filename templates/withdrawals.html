@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Quan Ly Rut Tien</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <a href="?status=pending"
+                class="btn btn-sm btn-outline-warning {{ 'active' if status == 'pending' else '' }}">Pending</a>
+            <a href="?status=approved"
+                class="btn btn-sm btn-outline-success {{ 'active' if status == 'approved' else '' }}">Approved</a>
+            <a href="?status=rejected"
+                class="btn btn-sm btn-outline-danger {{ 'active' if status == 'rejected' else '' }}">Rejected</a>
+            <a href="?status=all"
+                class="btn btn-sm btn-outline-secondary {{ 'active' if status == 'all' else '' }}">All</a>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>ID Rut</th>
+                    <th>User ID</th>
+                    <th>So Tien</th>
+                    <th>Thong Tin Ngan Hang</th>
+                    <th>Thoi Gian</th>
+                    <th>Hanh Dong</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for w in withdrawals %}
+                <tr>
+                    <td>{{ w['id'][:8] }}...</td>
+                    <td>{{ w['user_id'] }}</td>
+                    <td class="fw-bold text-danger">{{ '{:,}'.format(w['amount']) }}</td>
+                    <td>
+                        <small>Bank: {{ w['bank_name'] }}</small><br>
+                        <small>STK: {{ w['stk'] }}</small><br>
+                        <small>CTK: {{ w['ctk'] }}</small>
+                    </td>
+                    <td>{{ w['time'] }}</td>
+                    <td>
+
+                        {% if w['status'] == 'pending' %}
+                        <!-- Action Buttons -->
+                        <div class="btn-group">
+                            <form action="/admin/withdrawal/{{ w['id'] }}/approve" method="post" class="d-inline"
+                                onsubmit="return confirm('Duyet don rut tien? Tien DA BI TRU truoc do.')">
+                                <button type="submit" class="btn btn-sm btn-success">✓ Duyet</button>
+                            </form>
+                            <button class="btn btn-sm btn-danger ms-1" type="button" data-bs-toggle="modal"
+                                data-bs-target="#rejectModal{{ loop.index }}">✗ Huy</button>
+                        </div>
+
+                        <!-- Reject Modal -->
+                        <div class="modal fade" id="rejectModal{{ loop.index }}" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form action="/admin/withdrawal/{{ w['id'] }}/reject" method="post">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Tu Choi Rut Tien</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>User ID: {{ w['user_id'] }}</p>
+                                            <p>So tien hoan lai: {{ '{:,}'.format(w['amount']) }}</p>
+                                            <div class="mb-3">
+                                                <label class="form-label">Ly do:</label>
+                                                <input type="text" name="reason" class="form-control" required
+                                                    placeholder="Sai thong tin, ...">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-danger">Xac Nhan Huy & Hoan
+                                                Tien</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% elif w['status'] == 'approved' %}
+                        <span class="badge bg-success">Da Duyet</span>
+                        {% elif w['status'] == 'rejected' %}
+                        <span class="badge bg-danger">Da Huy</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

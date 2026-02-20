@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Cai Dat He Thong</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">Thong Tin Chung</h5>
+            </div>
+            <div class="card-body">
+                <form action="/admin/settings/update" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Ti Le Thang Global (%)</label>
+                        <input type="number" class="form-control" name="global_win_rate"
+                            value="{{ settings.get('global_win_rate', 30) }}" min="0" max="100">
+                        <div class="form-text">Ti le thang mac dinh cho tat ca user (mac dinh 30%).</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Ti Le Tra Thuong (Payout Rate):</label>
+                        <input type="number" step="0.01" class="form-control" name="payout_rate"
+                            value="{{ settings.get('payout_rate', 1.95) }}" min="1">
+                        <div class="form-text">Mac dinh 1.95 (1 an 1.95).</div>
+                    </div>
+
+                    <hr>
+
+
+
+
+                    <hr>
+                    <h6 class="mb-3">Thong Tin Nạp Tien (Hien thi cho user)</h6>
+                    <div class="mb-3">
+                        <label class="form-label">Ten Ngan Hang:</label>
+                        <input type="text" class="form-control" name="bank_name"
+                            value="{{ settings.get('bank_name', 'MB Bank') }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">So Tai Khoan:</label>
+                        <input type="text" class="form-control" name="bank_stk"
+                            value="{{ settings.get('bank_stk', '0000123456789') }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Chu Tai Khoan:</label>
+                        <input type="text" class="form-control" name="bank_ctk"
+                            value="{{ settings.get('bank_ctk', 'NGUYEN VAN A') }}">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Luu Cai Dat</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">Broadcast Tin Nhan</h5>
+            </div>
+            <div class="card-body">
+                <form action="/admin/broadcast" method="post"
+                    onsubmit="return confirm('Ban co chac chan muon gui tin nhan cho TAT CA user?')">
+                    <div class="mb-3">
+                        <label class="form-label">Noi dung tin nhan:</label>
+                        <textarea class="form-control" name="message" rows="5" required
+                            placeholder="Nhap noi dung tin nhan gui toi toan bo user..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-warning">Gui Broadcast</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

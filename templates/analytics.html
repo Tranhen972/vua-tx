@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Thong Ke Tai Chinh & Nguoi Dung</h1>
+</div>
+
+<div class="row">
+    <!-- Top Deposit -->
+    <div class="col-md-6">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-white">
+                <h5 class="mb-0 text-success"><i class="bi bi-arrow-up-circle"></i> Top Nap Tien</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Tong Nap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in stats['top_deposit'] %}
+                        <tr>
+                            <td>{{ user['user_id'] }}</td>
+                            <td class="fw-bold text-success">{{ '{:,}'.format(user['total_deposit']) }} VND</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="2" class="text-center">Chua co du lieu</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Withdraw -->
+    <div class="col-md-6">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-white">
+                <h5 class="mb-0 text-danger"><i class="bi bi-arrow-down-circle"></i> Top Rut Tien</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Tong Rut</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in stats['top_withdraw'] %}
+                        <tr>
+                            <td>{{ user['user_id'] }}</td>
+                            <td class="fw-bold text-danger">{{ '{:,}'.format(user['total_withdraw']) }} VND</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="2" class="text-center">Chua co du lieu</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-info">
+            <h4 class="alert-heading">💡 Suggestion</h4>
+            <p>De tranh spam hoac gian lan, hay kiem tra ky cac ID co tong nap/rut bat thuong.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

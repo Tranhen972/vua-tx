@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Tong Quan</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+                <a href="/admin/refresh_stats" class="btn btn-sm btn-outline-secondary">Refresh</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm badge-pending text-center p-3">
+                <h2 class="display-6 fw-bold">{{ stats['total_users'] }}</h2>
+                <p class="mb-0 text-muted">Thanh Vien</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm alert-success text-center p-3">
+                <h3 class="fw-bold text-success">{{ '{:,}'.format(stats['total_deposit']) }}đ</h3>
+                <p class="mb-0 text-muted">Tong Nap</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm alert-danger text-center p-3">
+                <h3 class="fw-bold text-danger">{{ '{:,}'.format(stats['total_withdraw']) }}đ</h3>
+                <p class="mb-0 text-muted">Tong Rut</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm alert-info text-center p-3">
+                <h3 class="fw-bold text-primary">{{ '{:,}'.format(stats['system_profit']) }}đ</h3>
+                <p class="mb-0 text-muted">Loi Nhuan (Real)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0">Users Moi Nhat</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Balance</th>
+                                <th>VIP</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for u in recent_users %}
+                            <tr>
+                                <td>{{ u['user_id'] }}</td>
+                                <td><span class="badge bg-light text-dark border">{{ '{:,}'.format(u['balance'])
+                                        }}</span></td>
+                                <td>{{ u['vip_level'] }}</td>
+                                <td><a href="#" class="btn btn-sm btn-outline-primary">View</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Rut Tien Cho Duyet</h5>
+                    <span class="badge bg-danger rounded-pill">{{ stats['pending_withdrawals'] }}</span>
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for w in pending_withdrawals[:5] %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <small class="text-muted">ID: {{ w['user_id'] }}</small><br>
+                            <strong>{{ '{:,}'.format(w['amount']) }}đ</strong>
+                        </div>
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    </li>
+                    {% endfor %}
+                    {% if not pending_withdrawals %}
+                    <li class="list-group-item text-center text-muted py-4">Khong co don rut nao</li>
+                    {% endif %}
+                </ul>
+                <div class="card-footer bg-white text-center">
+                    <a href="/admin/withdrawals" class="text-decoration-none">Xem Tat Ca &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

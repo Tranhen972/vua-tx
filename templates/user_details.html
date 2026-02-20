@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Chi Tiết Người Dùng: {{ user['user_id'] }}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a href="/admin/users" class="btn btn-outline-secondary">🔙 Quay Lại</a>
+    </div>
+</div>
+
+<div class="row">
+    <!-- User Info Summary -->
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="my-0">Thông Tin Chung</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Số Dư:</strong> <span class="text-success">{{ '{:,}'.format(user.get('balance', 0)) }}
+                        VND</span></p>
+                <p><strong>VIP Level:</strong> LV {{ user.get('vip_level', 0) }}</p>
+                <p><strong>Cược Đã Yêu Cầu:</strong> {{ '{:,}'.format(user.get('current_bet', 0)) }} / {{
+                    '{:,}'.format(user.get('required_wager', 0)) }} VND</p>
+                <hr>
+                <h6>Ngân Hàng Liên Kết:</h6>
+                {% if user.get('bank_info') %}
+                <p class="mb-1 text-primary">{{ user['bank_info'].get('bank', 'N/A') }} - {{
+                    user['bank_info'].get('stk', 'N/A') }}</p>
+                <p class="mb-0 text-muted">{{ user['bank_info'].get('ctk', 'N/A') }}</p>
+                {% else %}
+                <p class="text-muted">Chưa liên kết ngân hàng.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit / Withdraw Summary -->
+    <div class="col-md-8 mb-4">
+        <div class="row h-100">
+            <div class="col-6 mb-3">
+                <div class="card shadow-sm h-100 border-success">
+                    <div class="card-body text-center">
+                        <h6 class="text-success">Tổng Nạp</h6>
+                        <h4>{{ '{:,}'.format(user.get('total_deposit', 0)) }} VND</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 mb-3">
+                <div class="card shadow-sm h-100 border-danger">
+                    <div class="card-body text-center">
+                        <h6 class="text-danger">Tổng Rút</h6>
+                        <h4>{{ '{:,}'.format(user.get('total_withdraw', 0)) }} VND</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-auto">
+                <div class="card shadow-sm border-info">
+                    <div class="card-body text-center">
+                        <h6 class="text-info">Tổng Cược (Game)</h6>
+                        <h4>{{ '{:,}'.format(user.get('total_bet', 0)) }} VND</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detailed History Tabs -->
+<div class="card shadow-sm">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="game-tab" data-bs-toggle="tab" data-bs-target="#game" type="button"
+                    role="tab">🎲 Lịch Sử Chơi</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-success" id="deposit-tab" data-bs-toggle="tab" data-bs-target="#deposit"
+                    type="button" role="tab">📥 Lịch Sử Nạp</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-danger" id="withdraw-tab" data-bs-toggle="tab" data-bs-target="#withdraw"
+                    type="button" role="tab">📤 Lịch Sử Rút</button>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <div class="tab-content" id="myTabContent">
+            <!-- Game History -->
+            <div class="tab-pane fade show active" id="game" role="tabpanel">
+                <ul class="list-group">
+                    {% if user.get('history') %}
+                    {% for item in user['history']|reverse %}
+                    <!-- Since log string does not have color logic directly, we just print the string -->
+                    <li class="list-group-item">{{ item }}</li>
+                    {% endfor %}
+                    {% else %}
+                    <li class="list-group-item text-muted">Chưa có lịch sử chơi game.</li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <!-- Deposit History -->
+            <div class="tab-pane fade" id="deposit" role="tabpanel">
+                <ul class="list-group">
+                    {% if user.get('deposit_history') %}
+                    {% for item in user['deposit_history']|reverse %}
+                    <li class="list-group-item list-group-item-success">{{ item }}</li>
+                    {% endfor %}
+                    {% else %}
+                    <li class="list-group-item text-muted">Chưa có lịch sử nạp tiền.</li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <!-- Withdraw History -->
+            <div class="tab-pane fade" id="withdraw" role="tabpanel">
+                <ul class="list-group">
+                    {% if user.get('withdraw_history') %}
+                    {% for item in user['withdraw_history']|reverse %}
+                    <li class="list-group-item list-group-item-danger">{{ item }}</li>
+                    {% endfor %}
+                    {% else %}
+                    <li class="list-group-item text-muted">Chưa có lịch sử rút tiền.</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

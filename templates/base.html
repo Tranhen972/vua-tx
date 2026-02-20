@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .card-stat {
+            transition: all 0.3s;
+        }
+
+        .card-stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            min-height: 100vh;
+            background: #343a40;
+            color: white;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, .75);
+            padding: 12px 20px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .badge-pending {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .badge-completed {
+            background-color: #28a745;
+        }
+
+        .badge-rejected {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="d-none d-md-block col-md-2 sidebar p-0">
+            <h4 class="text-center py-4 border-bottom border-secondary">ADMIN CP</h4>
+            <nav class="nav flex-column">
+                <a class="nav-link active" href="/admin/dashboard">🏠 Tổng Quan</a>
+                <a class="nav-link" href="/admin/users">👥 Thành Viên</a>
+                <a class="nav-link" href="/admin/withdrawals">💸 Rút Tiền <span class="badge bg-danger ms-2">{{
+                        pending_count }}</span></a>
+                <a class="nav-link" href="/admin/analytics">📊 Thống Kê</a>
+                <a class="nav-link" href="/admin/giftcodes">🎁 Giftcodes</a>
+                <a class="nav-link" href="/admin/settings">⚙️ Cài Đặt</a>
+                <a class="nav-link" href="/admin/logs">📜 Logs</a>
+                <a class="nav-link mt-5 text-danger" href="/admin/logout">🚪 Đăng Xuất</a>
+            </nav>
+        </div>
+
+        <!-- Mobile Nav Toggle -->
+        <nav class="navbar navbar-dark bg-dark d-md-none fixed-top w-100 p-2">
+            <span class="navbar-brand mb-0 h1">Admin CP</span>
+            <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse"
+                data-bs-target="#mobileNav">☰</button>
+            <div class="collapse navbar-collapse" id="mobileNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="/admin/dashboard">🏠 Tổng Quan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/users">👥 Thành Viên</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/withdrawals">💸 Rút Tiền</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="col-12 col-md-10 p-4 mt-5 mt-md-0">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
